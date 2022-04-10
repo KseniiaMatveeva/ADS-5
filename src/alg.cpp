@@ -24,16 +24,13 @@ std::string infx2pstfx(std::string inf) {
   const char pr = ' ';
   for (int i = 0; i < inf.length(); i++) {
     if (prior(inf[i]) == 5) {
-      while (prior(inf[i]) == 5 && i < inf.length()) {
       outp += inf[i];
-      i++;
-      }
       outp += pr;
     } else if (ts.isEmpty() || prior(inf[i]) == 0
                      || (prior(inf[i]) > prior(ts.get()))) {
       ts.push(inf[i]);
     } else if (prior(inf[i]) == 1) {
-      while (prior(inf[i]) != 0) {
+      while (prior(ts.get()) != 0) {
         outp += ts.get();
         outp += pr;
         ts.pop();

@@ -29,7 +29,7 @@ std::string infx2pstfx(std::string inf) {
       i++;
       }
       outp += pr;
-    } else if (prior(ts.isEmpty()) || prior(inf[i]) == 0
+    } else if (ts.isEmpty() || prior(inf[i]) == 0
                      || (prior(inf[i]) > prior(ts.get()))) {
       ts.push(inf[i]);
     } else if (prior(inf[i]) == 1) {

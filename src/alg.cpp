@@ -29,8 +29,8 @@ std::string infx2pstfx(std::string inf) {
       i++;
       }
       outp += pr;
-    } else if (prior(ts.isEmpty()) && prior(inf[i]) == 0
-                     && (prior(inf[i]) > prior(ts.get()))) {
+    } else if (prior(ts.isEmpty()) || prior(inf[i]) == 0
+                     || (prior(inf[i]) > prior(ts.get()))) {
       ts.push(inf[i]);
     } else if (prior(inf[i]) == 1) {
       while (prior(inf[i]) != 0) {
@@ -40,7 +40,7 @@ std::string infx2pstfx(std::string inf) {
       }
       ts.pop();
     } else if (prior(inf[i]) <= ts.get()) {
-      while (prior(ts.get()) > 1 && !ts.isEmpty()) {
+      while (prior(ts.get()) > 1 || !ts.isEmpty()) {
         outp += ts.get();
         outp += pr;
         ts.pop();

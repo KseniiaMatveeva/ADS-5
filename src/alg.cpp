@@ -24,7 +24,7 @@ std::string infx2pstfx(std::string inf) {
   const char pr = ' ';
   for (int i = 0; i < inf.length(); i++) {
     if (prior(inf[i]) == 5) {
-      while (prior(inf[i]) == 5) {
+      while (prior(inf[i]) == 5 && i < inf.length()) {
       outp += inf[i];
       i++;
       }

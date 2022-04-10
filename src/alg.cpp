@@ -4,15 +4,15 @@
 #include "tstack.h"
 
 int prior(char c) {
-  if (c == "(")
+  if (c == '(')
     return 0;
-  else if ( c == ")")
+  else if ( c == ')')
     return 1;
-  else if (c == "+" || c == "-")
+  else if (c == '+' || c == '-')
     return 2;
-  else if ( c == "*" || c == "/")
+  else if ( c == '*' || c == '/')
     return 3;
-  else if (c == " ")
+  else if (c == ' ')
     return 4;
   else
     return 5;
@@ -21,16 +21,16 @@ int prior(char c) {
 std::string infx2pstfx(std::string inf) {
   std::string outp;
   TStack <char, 100> ts;
-  const char pr = " ";
-  for (int i = 0; i < inf.length; i++) {
+  const char pr = ' ';
+  for (int i = 0; i < inf.length(); i++) {
     if (prior(inf[i]) == 5) {
       while (prior(inf[i]) == 5) {
       outp += inf[i];
       i++;
       }
       outp += pr;
-    } else if (prior(ts.isEmpty() && prior(inf[i]) == 0 
-                     && (prior(inf[i]) > prior(ts.get()))) {
+    } else if (prior(ts.isEmpty() && prior(inf[i]) == 0
+                     && (prior(inf[i]) > prior(ts.get())) {
       ts.push(inf[i]);
     } else if (prior(inf[i]) == 1) {
       while (prior(inf[i]) !== 0) {
@@ -39,7 +39,7 @@ std::string infx2pstfx(std::string inf) {
         ts.pop();
       }
       ts.pop;
-    } else if (prior(inf[i]) < ts.get())){
+    } else if (prior(inf[i]) < ts.get()) {
       while (prior(ts.get) > 1 && !ts.isEmpty()) {
         outp += ts.get();
         outp += pr;
@@ -50,13 +50,13 @@ std::string infx2pstfx(std::string inf) {
   }
 while (!ts.isEmpty()) {
   outp += ts.get();
-  outp += ' ';
+  outp += pr;
   ts.pop();
   }
   outp.pop_back();
   return outp;
 }
-                     
+
 int eval(std::string pref) {
   std::string outp;
   TStack<int, 100> ts2;

@@ -3,7 +3,7 @@
 #include <map>
 #include "tstack.h"
 
-int prior ( char c) {
+int prior(char c) {
   if (c == "(")
     return 0;
   else if ( c == ")")
@@ -14,22 +14,23 @@ int prior ( char c) {
     return 3;
   else if (c == " ")
     return 4;
-  else 
+  else
     return 5;
 }
 
 std::string infx2pstfx(std::string inf) {
   std::string outp;
-  TStack<char, 100> ts;
-  char pr = " ";
-  for (int i = 0; i < inf.lenght; i++) {
+  TStack <char, 100> ts;
+  const char pr = " ";
+  for (int i = 0; i < inf.length; i++) {
     if (prior(inf[i]) == 5) {
       while (prior(inf[i]) == 5) {
       outp += inf[i];
       i++;
       }
       outp += pr;
-    } else if (prior(ts.isEmpty() && prior(inf[i]) == 0 && (prior(inf[i]) > prior(ts.get())) {
+    } else if (prior(ts.isEmpty() && prior(inf[i]) == 0 
+                     && (prior(inf[i]) > prior(ts.get()))) {
       ts.push(inf[i]);
     } else if (prior(inf[i]) == 1) {
       while (prior(inf[i]) !== 0) {
@@ -38,7 +39,7 @@ std::string infx2pstfx(std::string inf) {
         ts.pop();
       }
       ts.pop;
-    } else if (prior(inf[i]) < ts.get()) {
+    } else if (prior(inf[i]) < ts.get())){
       while (prior(ts.get) > 1 && !ts.isEmpty()) {
         outp += ts.get();
         outp += pr;
@@ -53,7 +54,7 @@ while (!ts.isEmpty()) {
   ts.pop();
   }
   outp.pop_back();
-  return output;
+  return outp;
 }
                      
 int eval(std::string pref) {
@@ -89,6 +90,6 @@ int eval(std::string pref) {
       }
     }
   }
-  res = ts.get();
+  res = ts2.get();
   return res;
 }
